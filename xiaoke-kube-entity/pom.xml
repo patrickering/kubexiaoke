@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>xiaoke-kube</artifactId>
+        <groupId>com.xiaoke</groupId>
+        <version>1.0.0</version>
+    </parent>
+
+
+    <artifactId>xiaoke-kube-entity</artifactId>
+    <packaging>jar</packaging>
+
+    <description>ioxiaoke-kubet 实体模块</description>
+
+    <dependencies>
+        <!-- 数据配置 -->
+        <dependency>
+            <groupId>com.xiaoke</groupId>
+            <artifactId>xiaoke-kube-common-data</artifactId>
+        </dependency>
+    </dependencies>
+</project>

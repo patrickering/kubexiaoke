@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>xiaoke-kube-common</artifactId>
+        <groupId>com.xiaoke</groupId>
+        <version>1.0.0</version>
+    </parent>
+
+
+    <artifactId>xiaoke-kube-common-data</artifactId>
+    <dependencies>
+        <!-- 核心包 -->
+        <dependency>
+            <groupId>com.xiaoke</groupId>
+            <artifactId>xiaoke-kube-common-core</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!-- 添加starter依赖jar -->
+        <dependency>
+            <groupId>com.diboot</groupId>
+            <artifactId>diboot-core</artifactId>
+            <version>${diboot.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-extension</artifactId>
+            <version>${mybatis-plus.version}</version>
+        </dependency>
+
+        <!-- jedis -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${jedis.version}</version>
+        </dependency>
+
+        <!-- MySql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+
+        <!-- druid 连接池 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+    </dependencies>
+
+
+</project>

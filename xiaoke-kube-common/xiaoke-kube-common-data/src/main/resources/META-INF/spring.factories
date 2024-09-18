@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    com.xiaoke.common.data.cache.RedisTemplateConfig,\
+    com.xiaoke.common.data.cache.RedisCacheManagerConfig,\
+    com.diboot.core.CorePluginInitializer,\
+    com.xiaoke.common.data.cache.RedisCacheAutoConfiguration

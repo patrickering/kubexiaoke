@@ -1,0 +1,196 @@
+<template>
+    <div>
+        <Button v-permission="{'value':'admin_syspublicparam_add'}" type="primary" icon="md-add" @click="handleEvent('add',null)">
+            新建
+        </Button>
+        <el-table
+                v-if="count>0"
+                :data="tableData"
+                size="small"
+                border
+                stripe
+                :header-row-style="()=>{return 'color: #5c6b77'}"
+                :header-cell-style="()=>{return 'background: #f8f8f9;line-height:35px'}"
+                style="width: 100%;margin-top: 10px">
+            <el-table-column prop="publicName"
+                             :show-overflow-tooltip="true"
+                             label="名称">
+
+            </el-table-column>
+            <el-table-column prop="publicKey"
+                             :show-overflow-tooltip="true"
+                             label="键">
+
+            </el-table-column>
+            <el-table-column prop="publicValue"
+                             :show-overflow-tooltip="true"
+                             label="值">
+
+            </el-table-column>
+            <el-table-column prop="validateCode"
+                             :show-overflow-tooltip="true"
+                             label="编码">
+
+            </el-table-column>
+            <el-table-column prop="system"
+                             width="100"
+
+                             label="类型">
+                <template slot-scope="scope">
+                    <span v-text="handleType(scope.row)"></span>
+                </template>
+            </el-table-column>
+            <el-table-column prop="status"
+                             width="100"
+
+                             label="状态">
+                <template slot-scope="scope">
+                    <span v-text="handleStatus(scope.row)"></span>
+                </template>
+            </el-table-column>
+            <el-table-column prop="publicType"
+                             width="100"
+
+                             label="业务类型">
+                <template slot-scope="scope">
+                    <span v-text="handleParam(scope.row)"></span>
+                </template>
+            </el-table-column>
+            <el-table-column
+                    label="操作"
+                    align="center"
+                    width="150">
+                <template slot-scope="scope">
+                    <el-button
+                            v-permission="{'value':'admin_syspublicparam_edit'}"
+                            type="text"
+                            size="mini"
+                            icon="el-icon-edit"
+                            @click="handleEvent('edit',scope.row)">编辑
+                    </el-button>
+                    <Poptip style="margin-left: 10px" transfer confirm title="确认删除?" @on-ok="handleEvent('del',scope.row)">
+                        <el-button
+                                v-permission="{'value':'admin_syspublicparam_del'}"
+                                type="text"
+                                size="mini"
+                                icon="el-icon-delete"
+                        >删除
+                        </el-button>
+                    </Poptip>
+                </template>
+            </el-table-column>
+        </el-table>
+        <el-empty v-else></el-empty>
+        <div style="display: flex;justify-content: flex-end;">
+            <Page v-if="count>0" style="margin-top: 10px;margin-bottom: 10px" transfer @on-change="pageChange"
+                  @on-page-size-change="sizeChange"
+                  prev-text="上一页"
+                  next-text="下一页" :total="count" show-elevator show-total show-sizer/>
+        </div>
+    </div>
+</template>
+<script>
+    import {addObj, delObj, fetchList, putObj} from '@/api/system/param'
+    import appUtils from '@/utils/appUtils';
+    import {rule} from '@/utils/validateRules';
+
+    export default {
+        props: {
+            query: {
+                type: Object
+            },
+            //扩展数据
+            extend: {
+                type: Object
+            }
+        },
+        data() {
+            return {
+                //列表数据
+                tableData: []
+                //数据总行数
+                , count: 0
+            }
+        },
+        computed: {},
+        methods: {
+            /**
+             * 搜索数据
+             */
+            search() {
+                this.query.current = 1
+                this.getData()
+            },
+            /**
+             * 处理类型
+             */
+            handleType(row) {
+                let type = this.extend.dictTypeList.filter(item => item.value == row.system);
+                if (type != null && type.length > 0) {
+                    return type[0].label
+                }
+                return ''
+            },
+            /**
+             * 处理状态
+             */
+            handleStatus(row) {
+                let type = this.extend.statusTypeList.filter(item => item.value == row.status);
+                if (type != null && type.length > 0) {
+                    return type[0].label
+                }
+                return ''
+            },
+            /**
+             * 处理业务类型
+             */
+            handleParam(row) {
+                let type = this.extend.paramTypeList.filter(item => item.value == row.status);
+                if (type != null && type.length > 0) {
+                    return type[0].label
+                }
+                return ''
+            },
+
+            /**
+             * 获取数据
+             */
+            getData() {
+                let loading = appUtils.showLoading()
+                fetchList(this.query).then(response => {
+                    this.tableData = response.data.records
+                    this.count = response.data.total
+                    appUtils.hideLoading(loading)
+                })
+            },
+
+            /**
+             * 页数发生改变
+             */
+            pageChange(val) {
+                this.query.current = val
+                this.getData()
+            },
+
+            /**
+             * 每页显示条数发生改变
+             */
+            sizeChange(val) {
+                this.query.size = val
+                this.query.current = 1
+                this.getData()
+            },
+            /**
+             * 事件
+             * @param type 事件类型
+             * @param data 事件数据
+             */
+            handleEvent(type, data) {
+                this.$emit('on-events', {type: type, data: data});
+            }
+        },
+        mounted() {
+            this.getData()
+        },
+    }
+</script>

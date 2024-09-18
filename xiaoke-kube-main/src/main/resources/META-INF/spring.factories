@@ -1,0 +1,7 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    com.xiaoke.configuration.WebMvcConfig,\
+    com.xiaoke.configuration.MybatisPlusConfiguration,\
+    com.xiaoke.exception.event.SysErrorListener,\
+    com.xiaoke.websocket.config.WebSocketAutoConfiguration,\
+    com.xiaoke.websocket.config.RedisMessageDistributorConfiguration,\
+    com.xiaoke.websocket.config.LocalMessageDistributorConfiguration

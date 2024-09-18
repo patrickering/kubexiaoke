@@ -1,0 +1,55 @@
+@font-face {
+  font-family: "i-icon-kube"; /* Project id 4648506 */
+  src: url('iconfont.woff2?t=1723170306541') format('woff2'),
+       url('iconfont.woff?t=1723170306541') format('woff'),
+       url('iconfont.ttf?t=1723170306541') format('truetype');
+}
+
+.i-icon-kube {
+  font-family: "i-icon-kube" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.i-icon-kube-zonglan_Default:before {
+  content: "\e60f";
+}
+
+.i-icon-kube-yingyongguanli_Default:before {
+  content: "\e610";
+}
+
+.i-icon-kube-peizhiguanli_Default:before {
+  content: "\e611";
+}
+
+.i-icon-kube-cunchuguanli:before {
+  content: "\e612";
+}
+
+.i-icon-kube-yuming:before {
+  content: "\e613";
+}
+
+.i-icon-kube-yingyongshichang:before {
+  content: "\e614";
+}
+
+.i-icon-kube-goujian_Default:before {
+  content: "\e615";
+}
+
+.i-icon-kube-caozuoguanli_Default:before {
+  content: "\e616";
+}
+
+.i-icon-kube-a-UsersGroupRounded:before {
+  content: "\e617";
+}
+
+.i-icon-kube-a-huabanbeifen3:before {
+  content: "\e618";
+}
+

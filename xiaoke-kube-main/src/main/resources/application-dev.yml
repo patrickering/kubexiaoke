@@ -1,0 +1,156 @@
+server:
+  port: 8089
+  tomcat:
+    uri-encoding: UTF-8
+  undertow:
+    io-threads: 20
+    worker-threads: 2000
+
+#接口前缀
+controller:
+  prefix: xiaoke-kube
+  system:
+    prefix: system
+  kube:
+    prefix: kube
+app:
+  url: kube.xiaokecloud.com
+  name: 小可容器云
+
+swagger:
+  title: 小可容器云 Swagger API
+  license: Powered By 小可容器云
+  licenseUrl: http://kube.xiaokecloud.com/
+  terms-of-service-url: http://kube.xiaokecloud.com/
+
+mybatis-plus:
+  mapper-locations: classpath*:/mybatis/kube/*Mapper.xml,classpath*:/mybatis/system/*Mapper.xml
+  global-config:
+    banner: false
+    db-config:
+      id-type: auto
+      field-strategy: NOT_EMPTY
+  type-handlers-package: com.xiaoke.handler
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#数据库连接池配置
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  servlet:
+    multipart:
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/xiaoke-kube?useUnicode=true&characterEncoding=utf8&useSSL=false&useTimezone=true&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    initial-size: 5
+    min-idle: 20
+    max-active: 20
+    max-wait: 60000
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 300000
+    validation-query: SELECT 1 FROM DUAL
+    test-while-idle: true
+    test-on-borrow: false
+    test-on-return: false
+    pool-prepared-statements: true
+    max-pool-prepared-statement-per-connection-size: 20
+    filters: stat,log4j
+
+  #redis
+  redis:
+    host: 127.0.0.1
+    jedis:
+      pool:
+        # 连接池最大连接数（使用负值表示没有限制）
+        max-active: 8
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1
+        # 连接池中的最大空闲连接
+        max-idle: 8
+        # 连接池中的最小空闲连接
+        min-idle: 0
+    # 连接超时时间（毫秒）
+    timeout: 5000
+
+colony:
+  #集群地址
+  url: https://127.0.0.1:6443
+  #授权令牌
+  authorization: eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJkYXNoYm9hcmQtYWRtaW4tdG9rZW4tZHByZHoiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGFzaGJvYXJkLWFkbWluIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiNTRmNTMzMDgtZmEyOS00ZmRkLWIwNGItYmMzOWQ5MjRlNWIxIiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50Omt1YmUtc3lzdGVtOmRhc2hib2FyZC1hZG1pbiJ9.JkBiys5kLNn4rdE75_xKmDKmKtScFbFox5B6gFnOi2WQM3U4QfKEky3DxeYTOMR1leMWf8ok8hRNKE57pTD0UP2o0q61nvB84fMpvXbag_oAtQY7iLMNjA9oCsM7ROW8dj4NmYUpiQDuT7pONZOs81zkXO811K5KolxzlkPIkxwhhI4ghE273ag8AL4iwyqBtWuhxvau3ISHoVJmRbdf2wUDy2HjvERDDiKyugXRWO1uehhyH2p4iLjdOGmhfQL4FOnRPOB4lhfeHG3Kk5EBNfqP5rnrkY7h6z94_ZSeJRPtvwHao0FMKh
+  #日志收集地址
+  log-url: 127.0.0.1:30002
+  #日志收集账号
+  log-username: test
+  #日志收集密码
+  log-password: test
+  #监控地址
+  monitor-url: http://127.0.0.1:30007
+  #监控授权
+  monitor-auth: eyJrIjoiS29ZbVJpRW1ZYlNsTU9QUkVibUs0YXg1QXBhRUtZbUEiLCJuIjoiZG9zaW9uIiwiaWQiOj
+
+
+#微信参数配置
+wx:
+  wx-app-id: xxxx
+  wx-app-secret: xxxxxx
+  mini-app-id: xxxx
+  mini-app-secret: xxxxxx
+
+#安全配置
+security:
+  enable: true
+  # 允许未签名访问的url地址
+  ignoreSignUri:
+    - /druid
+    - /swagger-ui.html
+    - /swagger-resources
+    - /v2/api-docs
+    - /webjars/springfox-swagger-ui
+    - /csrf
+    - /websocket
+    - /ws
+    - /sys-file
+    - /system/login/code
+    - /system/file/upload
+    - /system/mobile/phone-image
+    - /doc.html
+    - /webjars
+    - /kube/config/upload
+
+#登录配置
+login:
+  #登录密码错误限制
+  limit-enable: true
+  #限制次数
+  limit-count: 5
+  #超过次数后限制时间（小时）
+  limit-time: 1
+
+kube:
+  tenant:
+    tables:
+      - kube_app
+      - kube_app_config
+      - kube_app_custom_env
+      - kube_app_domain_rule
+      - kube_app_host
+      - kube_app_image_record
+      - kube_app_pod_record
+      - kube_app_port
+      - kube_app_service
+      - kube_app_storage
+      - kube_app_stretch
+      - kube_config_version
+      - kube_config
+      - kube_storage
+      - kube_app_domain
+      - kube_error_record
+      - kube_push_user

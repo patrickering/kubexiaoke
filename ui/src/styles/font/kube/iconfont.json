@@ -1,0 +1,79 @@
+{
+  "id": "4648506",
+  "name": "小可容器云",
+  "font_family": "i-icon-kube",
+  "css_prefix_text": "i-icon-kube-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "41358161",
+      "name": "总览",
+      "font_class": "zonglan_Default",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "41358167",
+      "name": "应用管理",
+      "font_class": "yingyongguanli_Default",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "41358168",
+      "name": "配置管理",
+      "font_class": "peizhiguanli_Default",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "41358170",
+      "name": "存储管理",
+      "font_class": "cunchuguanli",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "41358171",
+      "name": "域名",
+      "font_class": "yuming",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "41358174",
+      "name": "应用市场",
+      "font_class": "yingyongshichang",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "41358176",
+      "name": "编译构建",
+      "font_class": "goujian_Default",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "41358181",
+      "name": "操作管理",
+      "font_class": "caozuoguanli_Default",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "41358183",
+      "name": "推送接收人",
+      "font_class": "a-UsersGroupRounded",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "41358191",
+      "name": "计划任务",
+      "font_class": "a-huabanbeifen3",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    }
+  ]
+}
